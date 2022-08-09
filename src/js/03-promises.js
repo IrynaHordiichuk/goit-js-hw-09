@@ -32,7 +32,6 @@ function onSubmit(event){
         delay += step;
       }
       event.target.reset();
-      
 }
 
 function createPromise(position, delay){

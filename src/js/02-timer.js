@@ -11,6 +11,9 @@ const refs = {
   minutes: document.querySelector("[data-minutes]"),
   seconds: document.querySelector("[data-seconds]"),
 }
+console.log(refs.startBtn);
+console.log(refs.input);
+console.log('object');
 
 let selectedDate = null;
 
@@ -22,16 +25,17 @@ const options = {
     onClose,
   };
 
+ 
+
   function onClose(selectedDates) {
-    // refs.startBtn.disable = true;
+    
+    refs.startBtn.setAttribute("active", true);
     if(selectedDates[0] < Date.now()){
       Notiflix.Notify.warning("Please choose a date in the future");
   } else {
     
     selectedDate = selectedDates[0];
   }
-  // console.log(selectedDates[0]);
-  // console.log(refs.input.value);
 };
 
  flatpickr(refs.input, options);
@@ -43,7 +47,7 @@ function addLeadingZero(value){
 refs.startBtn.addEventListener("click", startTimer);
 
 function startTimer(){
-  // refs.startBtn.disable = false;
+  refs.startBtn.removeAttribute("active");
  const timerId = setInterval( () => {
   let timeDifference = selectedDate - Date.now();
 
