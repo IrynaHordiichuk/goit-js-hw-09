@@ -26,14 +26,13 @@ const options = {
   };
 
  
-
+  refs.startBtn.setAttribute("disabled", "disabled");
   function onClose(selectedDates) {
     
-    refs.startBtn.setAttribute("active", true);
     if(selectedDates[0] < Date.now()){
       Notiflix.Notify.warning("Please choose a date in the future");
   } else {
-    
+    refs.startBtn.removeAttribute('disabled','disabled');
     selectedDate = selectedDates[0];
   }
 };
@@ -46,8 +45,9 @@ function addLeadingZero(value){
 
 refs.startBtn.addEventListener("click", startTimer);
 
+
+
 function startTimer(){
-  refs.startBtn.removeAttribute("active");
  const timerId = setInterval( () => {
   let timeDifference = selectedDate - Date.now();
 
