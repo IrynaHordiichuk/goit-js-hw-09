@@ -14,7 +14,7 @@ function onSubmit(event) {
   let amount = Number(event.currentTarget.elements.amount.value);
 
   for (let i = 1; i <= amount; i += 1) {
-    position = i;
+    let position = i;
 
     createPromise(position, delay)
       .then(({ position, delay }) => {
